@@ -12,7 +12,8 @@
   "dependencies": {
     "cross-env": "^7.0.3",
     "express": "^4.19.1",
-    "joi": "^17.12.2"
+    "joi": "^17.12.2",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^8.57.0",

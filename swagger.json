@@ -1,0 +1,377 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "version": "2.0.2",
+        "title": "RESTful API",
+        "description": "JSON file management application",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "servers": [
+        { "url": "https://team-project-pets-backend.onrender.com/api" },
+        { "url": "http://localhost:3002/api" }
+    ],
+    "tags": [
+        {
+            "name": "Users",
+            "description": "Users file endpoints"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create user file",
+                "parameters": [],
+                "security": [],
+                "requestBody": {
+                    "description": "User information request body",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                            "$ref": "#/components/schemas/CreateUserFileRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreatePetsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request (invalid request body)",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Users"],
+                "summary": "Get all users files",
+                "parameters": [],
+                "security": [],
+                "requestBody": [],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetAllFilesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request (invalid request body)",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                }
+            }
+        },
+
+        "/users/{fileName}": {
+            "delete": {
+                "tags": ["Users"],
+                "summary": "Remove user file",
+                "parameters": [
+                    {
+                    "in": "path",
+                    "name": "fileName",
+                    "schema": {
+                        "type": "string",
+                        "example": "5678465637"
+                    },
+                    "required": true,
+                    "description": "String file name"
+                    }
+                ],
+                "security": [],
+                "requestBody": [],
+                "responses": {
+                    "200": {
+                    "description": "Success",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RemoveFileResponse"
+                            }
+                        }
+                    }
+                    },
+                    "400": {
+                        "description": "Bad request (invalid request body)",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "File is not found",
+                        "content": {}
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Users"],
+                "summary": "Update user file",
+                "parameters": [
+                    {
+                    "in": "path",
+                    "name": "fileName",
+                    "schema": {
+                        "type": "string",
+                        "example": "5678465637"
+                    },
+                    "required": true,
+                    "description": "String file name"
+                    }
+                ],
+                "security": [],
+                "requestBody": {
+                    "description": "Updates object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                            "$ref": "#/components/schemas/UpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                    "description": "Success",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateResponse"
+                            }
+                        }
+                    }
+                    },
+                    "400": {
+                        "description": "Bad request (invalid request body)",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "File is not found",
+                        "content": {}
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Users"],
+                "summary": "Get user file by fileName",
+                "parameters": [
+                    {
+                    "in": "path",
+                    "name": "fileName",
+                    "schema": {
+                        "type": "string",
+                        "example": "5678465637"
+                    },
+                    "required": true,
+                    "description": "String file name"
+                    }
+                ],
+                "security": [],
+                "requestBody": [],
+                "responses": {
+                    "200": {
+                    "description": "Success",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetFileByFilenameResponse"
+                            }
+                        }
+                    }
+                    },
+                    "400": {
+                        "description": "Bad request (invalid request body)",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "File is not found",
+                        "content": {}
+                    }
+                }
+            }
+        }
+    },
+
+    "components": {
+        "schemas": {
+
+            "CreateUserFileRequest": {
+                "type": "object",
+                "required": ["fileName", "userData"],
+                "properties": {
+                    "fileName": {
+                    "type": "number",
+                    "description": "User fileName"
+                    },
+                    "userData": {
+                        "type": "object",
+                        "description": "User Data",
+                        "required": ["name", "age", "sex"],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "User name"
+                            },
+                            "age": {
+                                "type": "number",
+                                "description": "User age (18+)"
+                            },
+                            "sex": {
+                                "type": "string",
+                                "description": "User's sex: [male, female]"
+                            }
+                        }
+                    }
+                }
+            },
+            "CreateUserFileResponse": {
+                "type": "object",
+                "properties": {
+                    "fileName": {
+                        "type": "number",
+                        "description": "User fileName",
+                        "example": "9867463567"
+                    },
+                    "userData": {
+                        "type": "object",
+                        "description": "User Data",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "User name",
+                                "example": "Dan"
+                            },
+                            "age": {
+                                "type": "number",
+                                "description": "User age (18+)",
+                                "example": 45
+                            },
+                            "sex": {
+                                "type": "string",
+                                "description": "User's sex: [male, female]",
+                                "example": "male"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "name": "Dan",
+                    "age": 45,
+                    "sex": "male"
+                }
+            },
+
+            "UpdateRequest": {
+                "type": "object",
+                "description": "User Data",
+                "required": ["name", "age", "sex"],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "User name"
+                    },
+                    "age": {
+                        "type": "number",
+                        "description": "User age (18+)"
+                    },
+                    "sex": {
+                        "type": "string",
+                        "description": "User's sex: [male, female]"
+                    }
+                }
+            },
+            "UpdateResponse": {
+                "type": "object",
+                "description": "User Data",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "User name",
+                        "example": "Dan"
+                    },
+                    "age": {
+                        "type": "number",
+                        "description": "User age (18+)",
+                        "example": 45
+                    },
+                    "sex": {
+                        "type": "string",
+                        "description": "User's sex: [male, female]",
+                        "example": "male"
+                    }
+                },
+                "example": {
+                    "name": "Dan",
+                    "age": 45,
+                    "sex": "male"
+                }
+            },
+
+            "GetAllFilesResponse": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "description": "file name",
+                    "example": "5678345674.json"
+                }
+            },
+            
+            "RemoveFileResponse": {
+                "example": {
+                    "message": "File is deleted"
+                }
+            },
+
+            "GetFileByFilenameResponse": {
+                "type": "object",
+                "description": "User Data",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "User name",
+                        "example": "Dan"
+                    },
+                    "age": {
+                        "type": "number",
+                        "description": "User age (18+)",
+                        "example": 45
+                    },
+                    "sex": {
+                        "type": "string",
+                        "description": "User's sex: [male, female]",
+                        "example": "male"
+                    }
+                },
+                "example": {
+                    "name": "Dan",
+                    "age": 45,
+                    "sex": "male"
+                }
+            }
+        }
+    }
+}
