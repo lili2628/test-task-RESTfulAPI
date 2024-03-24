@@ -12,8 +12,7 @@
     "consumes": ["application/json"],
     "produces": ["application/json"],
     "servers": [
-        { "url": "https://team-project-pets-backend.onrender.com/api" },
-        { "url": "http://localhost:3002/api" }
+        { "url": "https://test-task-restfulapi.onrender.com/api" }
     ],
     "tags": [
         {
