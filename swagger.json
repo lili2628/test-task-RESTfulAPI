@@ -224,7 +224,8 @@
                 "properties": {
                     "fileName": {
                     "type": "number",
-                    "description": "User fileName"
+                    "description": "User fileName",
+                    "example": 9867567856
                     },
                     "userData": {
                         "type": "object",
@@ -233,15 +234,18 @@
                         "properties": {
                             "name": {
                                 "type": "string",
-                                "description": "User name"
+                                "description": "User name",
+                                "example": "Tom"
                             },
                             "age": {
                                 "type": "number",
-                                "description": "User age (18+)"
+                                "description": "User age (18+)",
+                                "example": 34
                             },
                             "sex": {
                                 "type": "string",
-                                "description": "User's sex: [male, female]"
+                                "description": "User's sex: [male, female]",
+                                "example": "male"
                             }
                         }
                     }
@@ -291,15 +295,18 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "User name"
+                        "description": "User name",
+                        "example": "Tom"
                     },
                     "age": {
                         "type": "number",
-                        "description": "User age (18+)"
+                        "description": "User age (18+)",
+                        "example": 34
                     },
                     "sex": {
                         "type": "string",
-                        "description": "User's sex: [male, female]"
+                        "description": "User's sex: [male, female]",
+                        "example": "male"
                     }
                 }
             },
