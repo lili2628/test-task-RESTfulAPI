@@ -249,6 +249,14 @@
                             }
                         }
                     }
+                },
+                "example": {
+                    "fileName": 5646677846,
+                    "userData": {
+                        "name": "Dan",
+                        "age": 45,
+                        "sex": "male"
+                    }
                 }
             },
             "CreateUserFileResponse": {
@@ -308,6 +316,11 @@
                         "description": "User's sex: [male, female]",
                         "example": "male"
                     }
+                },
+                "example": {
+                    "name": "Dan",
+                    "age": 45,
+                    "sex": "male"
                 }
             },
             "UpdateResponse": {
