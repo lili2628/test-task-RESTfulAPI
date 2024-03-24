@@ -6,7 +6,7 @@
 
 _______________________
 
-[Swagger](https://test-task-restfulapi.onrender.com/api-docs/) documentation
+[Swagger](http://localhost:3002/api-docs) documentation
 
 - [GH Repository](https://github.com/lili2628/test-task-RESTfulAPI)
 
