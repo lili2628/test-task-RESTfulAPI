@@ -1,3 +1,4 @@
+// create custom errors
 const HttpError = (status, message) => {
     const error = new Error(message);
 
